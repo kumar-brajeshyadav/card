@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="studentcard.css">
+    <script src="student.js"></script>
+    <title>Student-card</title>
+    <style>
+        *{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url(backiee-168752.jpg);
+}
+
+
+.background{
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    display:flex;
+    justify-content:center;
+    backdrop-filter: blur(30px);
+    align-items:center;
+    position: relative;
+}
+
+
+.container{
+    height: 40%;
+    width: 35%;
+    background-image: url(backiee-168752.jpg);
+    background-size: cover;
+    border-radius: 10px;
+    background-color: #fff;
+    position: absolute;
+    box-shadow:1px 1px 15px 1px white;
+}
+
+
+.screen{
+    color: #fff;
+    font-size: 25px;
+    position: absolute;
+    left: 5rem;
+    top: 90px;
+}
+
+
+.screen::after{
+    content:"";
+    width: 1px;
+    height: 100px;
+    position: absolute;
+    bottom:-10px;
+    left:-10px;
+    border: 2px solid#fdf6f6;
+    background-color: #faf8f8;
+}
+
+
+.com{
+    color: #fbfafa;
+    font-size:20px;
+    border:none;
+    background-color:transparent;
+    position: absolute;
+    left: 16.9rem;
+    bottom: 3rem;
+    cursor:initial;
+}
+
+
+
+.app-form-control{
+    color: #fff;
+    font-size: 15px;
+    border:transparent;
+    padding: 20px 40px 6px  1px;
+    background-color:transparent;
+    border-bottom: 2px solid rgb(251, 249, 249);
+    position:relative;
+    top:1rem;
+    left: 16.9rem;
+    outline: none;
+}
+
+
+.app-from-groupshowdata{
+    background-color: #faf8f8;
+    color: rgb(3, 3, 3);
+}
+
+
+.app-form-control::placeholder{
+    font-size: 20px;
+    color: rgb(253, 246, 246);
+}
+
+
+p{
+   color: #fbfafa;
+   font-size:17px;
+   border:none;
+   background-color:transparent;
+   position: absolute;
+   left:34rem;
+   bottom: 14rem;
+   cursor:initial;
+}
+
+
+@media (max-width: 600px) {
+    .background{
+      font-size: 14px;
+    }
+  
+    .container{
+      padding: 10px;
+    }
+  
+    .screen{
+      margin-bottom: 10px;
+    }
+  
+    .screen::after {
+      font-size: 20px;
+    }
+  
+   .com {
+      width: 60px;
+    }
+  
+    .app-form-control {
+      font-size: 16px;
+    }
+  
+    .app-from-groupshowdata{
+      font-size: 18px;
+    }
+  }
+
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="container">
+            <div class="screen">
+                    <div class="app-title">
+                    <div class="animated infintite pulse">
+                        <b>STUDENT</b> <br> <b>GAADE</b> <br> <b>CARD</b> <br>
+                      </div>
+                    </div>
+                </div>
+                <div class="screen-body-item">
+                    <div class="app-form">
+                        <div class="app-form-group">
+                             <input type="text" class="app-form-control" placeholder="WEP-PROGRAMMING" name="" id="wd">
+                        </div>
+                        <div class="app-form-group">
+                            <input type="text" class="app-form-control" placeholder="MATH"  id="maths">
+                        </div>   
+                         <div class="app-form-group">
+                            <input type="text" class="app-form-control" placeholder="COMPUTER"  id="comp">
+                        </div> 
+                        <div class="app-form-group">
+                            <input type="text" class="app-form-control" placeholder="PHYSICS" id="phy">
+                        </div>  
+                        <div class="app-form-group">
+                            <input type="button" class="com" value="showpercentage" placeholder="" onclick="calcy()">
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="app-from-groupshowdata">
+                <p id="showdata"></p>
+           </div>
+        </div>
+    </div>
+    <script>
+        const calcy = () =>{
+    let wd = document.getElementById("wd").value;
+    let maths = document.getElementById("maths").value;
+    let comp = document.getElementById("comp").value;
+    let phy = document.getElementById("phy").value;
+    let grades = "";
+ 
+
+    let totalgrades = parseFloat(wd) + parseFloat(maths) + parseFloat(comp) + parseFloat(phy);
+    alert(totalgrades);
+
+    let perc = (totalgrades/400) * 100;
+    alert(perc)
+
+
+    if(perc <= 100 && perc >= 80){
+        grades = "A";
+    }else if(perc <= 79 && perc >= 69 ){
+        grades = 'B';
+    } else if(perc <= 59 && perc >= 49 ){
+        grades = 'c';
+    }else{
+        grades = "F"
+    }
+
+    if(perc >= 39.5){
+        document.getElementById('showdata').innerHTML = `out fo 400 you total is  ${totalgrades} and percentage is ${perc}%. <br> your grade is ${grades}. you are pass `
+
+    }else{
+        document.getElementById('showdata').innerHTML =` out fo 400 you total is  ${totalgrades} and percentage is ${perc}%. <br> your grade is ${grades}. you are pass `
+
+    }
+} 
+    </script>
+</body>
+</html>
